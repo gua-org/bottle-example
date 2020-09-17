@@ -1,10 +1,12 @@
-import bottle
+from bottle import run, get
+import random
 
-APP = bottle.Bottle()
+@get('/random')
+def random_integer():
+  return str(random.randint(0, 100))
 
-@APP.get('/')
+@get('/')
 def index():
   return '<p>Hello</p>'
 
-if __name__ == '__main__':
-  bottle.run(application=APP)
+run(reloader=True, debug=True)
